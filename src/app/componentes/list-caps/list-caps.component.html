@@ -1,0 +1,50 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="md-form">
+        <div class="row">
+          <div class="col">
+            <div class="input-group m-1">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Buscar</span>
+              </div>
+              <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput />
+            </div>
+          </div>
+          <div class="col-3">
+            <button mdbBtn color="indigo" size="sm" mdbWavesEffect type="button" class="m-1"
+              (click)="downloadTxt()">Descargar .txt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table mdbTable class="table table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let head of headElements; let i = index" scope="col">
+            {{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cap of capitulos; let i = index">
+          <th scope="row">
+            <input (click)="fieldsChange(cap)" value="selected" type="checkbox" />
+          </th>
+          <th scope="row">{{cap.id}}</th>
+          <th scope="row">{{cap.name}}</th>
+          <th scope="row">{{cap.episode}}</th>
+          <th scope="row">{{cap.air_date}}</th>
+          <th scope="row">
+            <button mdbBtn color="indigo" size="sm" mdbWavesEffect type="button" class="m-0" (click)="onPress(cap)">Ver
+              más</button>
+            <div id="comp-render" *ngIf="display">
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
